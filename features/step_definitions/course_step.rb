@@ -1,8 +1,12 @@
 # encoding: utf-8
+require 'fabrication'
+require 'fabrication/cucumber'
+
 World(Rack::Test::Methods)
 
 前提 /^授業が登録されている$/ do
-  Course.create(number: 10)
+  # Course.create(number: 10)
+  Fabricate(:course)
 end
 
 前提 /^授業の一覧取得APIにアクセスしている$/ do
