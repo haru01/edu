@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20111014071503) do
 
   create_table "courses", :force => true do |t|
-    t.date     "start"
-    t.date     "end"
+    t.date     "from_date"
+    t.date     "to_date"
     t.integer  "status"
     t.integer  "number"
     t.string   "location"
