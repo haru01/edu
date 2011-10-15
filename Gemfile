@@ -32,6 +32,7 @@ gem 'jquery-rails'
 
 group :development, :test, :cucumber do
   # Pretty printed test output
+  gem 'active_enum'
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'database_cleaner'

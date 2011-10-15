@@ -4,6 +4,13 @@ require 'fabrication/cucumber'
 
 World(Rack::Test::Methods)
 
+Given /^講師マスタが登録されている$/ do
+  Fabricate(:lecturer, name: "天野")
+  Fabricate(:lecturer, name: "懸田")
+  Fabricate(:lecturer, name: "児玉")
+  Fabricate(:lecturer, name: "家永")
+end
+
 Given /^授業が登録されている$/ do |table|
   table.hashes.each do | hash |
     Fabricate(:course,
