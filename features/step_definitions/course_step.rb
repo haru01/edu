@@ -13,10 +13,13 @@ end
 
 Given /^授業が登録されている$/ do |table|
   table.hashes.each do | hash |
-    Fabricate(:course,
-      from_date: Date.strptime(hash["開催日"], "%Y-%m-%d"),
-      location: hash["場所"],
-      number: hash["人数"].to_i)
+    course = Fabricate(:course,
+              from_date: Date.strptime(hash["開催日"], "%Y-%m-%d"),
+              location: hash["場所"],
+              number: hash["人数"].to_i)
+    lecturer = Lecturer.find_by_name(hash["講師(主)"])
+    Fabricate(:assign, course_id: course.id,
+                       lecturer_id: lecturer.id)
   end
 end
 
@@ -41,4 +44,5 @@ Then /^授業情報が取得できていること$/ do |table|
   actual["from_date"].should == exptect["開催日"]
   actual["location"].should == exptect["場所"]
   actual["number"].should == exptect["人数"].to_i
+  actual["main_lecturer"].should == exptect["講師(主)"]
 end
