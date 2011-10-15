@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   respond_to :json
   def index
-    respond_with(@courses = Course.order("from_date"))
+    @courses = Course.order("from_date")
+    respond_with(@courses,{include: :main_lecturer})
   end
 end

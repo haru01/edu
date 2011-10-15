@@ -1,7 +1,4 @@
 # encoding: utf-8
-require 'fabrication'
-require 'fabrication/cucumber'
-
 World(Rack::Test::Methods)
 
 Given /^講師マスタが登録されている$/ do
@@ -44,5 +41,5 @@ Then /^授業情報が取得できていること$/ do |table|
   actual["from_date"].should == exptect["開催日"]
   actual["location"].should == exptect["場所"]
   actual["number"].should == exptect["人数"].to_i
-  actual["main_lecturer"].should == exptect["講師(主)"]
+  actual["main_lecturer"]["name"].should == exptect["講師(主)"]
 end
