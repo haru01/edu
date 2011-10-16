@@ -15,7 +15,7 @@ Given /^授業が登録されている$/ do |table|
               location: hash["場所"],
               number: hash["人数"].to_i)
     lecturer = Lecturer.find_by_name(hash["講師(主)"])
-    Fabricate(:assign, course_id: course.id,
+    @assign = Fabricate(:assign, course_id: course.id,
                        lecturer_id: lecturer.id)
   end
 end
@@ -36,10 +36,12 @@ end
 
 Then /^授業情報が取得できていること$/ do |table|
   actual = JSON.parse(last_response.body)[0]
+  puts actual
   exptect = table.hashes[0]
 
+  actual["main_lecturer"]["name"].should == exptect["講師(主)"]
   actual["from_date"].should == exptect["開催日"]
   actual["location"].should == exptect["場所"]
   actual["number"].should == exptect["人数"].to_i
-  actual["main_lecturer"]["name"].should == exptect["講師(主)"]
+  Course::Status[actual["status"]].should == exptect["ステータス"]
 end
