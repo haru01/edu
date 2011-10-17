@@ -8,6 +8,14 @@ Given /^講師マスタが登録されている$/ do
   Fabricate(:lecturer, name: "家永")
 end
 
+Given /^カリキュラムマスタが登録されている$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^顧客マスタが登録されている$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
 Given /^授業が登録されている$/ do |table|
   table.hashes.each do | hash |
     course = Fabricate(:course,
@@ -47,3 +55,6 @@ Then /^授業情報が取得できていること$/ do |table|
   actual["number"].should == exptect["人数"].to_i
   Course::Status[actual["status"]].should == exptect["ステータス"]
 end
+
+
+
