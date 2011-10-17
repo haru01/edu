@@ -23,7 +23,8 @@ end
 Given /^授業が登録されている$/ do |table|
   table.hashes.each do | hash |
     course = Fabricate(:course,
-              from_date: Date.strptime(hash["開催日"], "%Y-%m-%d"),
+              from_date: Date.strptime(hash["開催日（開始）"], "%Y-%m-%d"),
+              to_date: Date.strptime(hash["開催日（終了）"], "%Y-%m-%d"),
               location: hash["場所"],
               number: hash["人数"].to_i)
     lecturer = Lecturer.find_by_name(hash["講師(主)"])
@@ -67,7 +68,8 @@ Then /^授業情報が取得できていること$/ do |table|
   actual["main_lecturer"]["name"].should == exptect["講師(主)"]
   # TODO 講師（副）の情報取得
   # TODO カリキュラムの名前、概要の情報取得
-  actual["from_date"].should == exptect["開催日"]
+  actual["from_date"].should == exptect["開催日（開始）"]
+  actual["to_date"].should == exptect["開催日（終了）"]
   actual["location"].should == exptect["場所"]
   actual["number"].should == exptect["人数"].to_i
   Course::Status[actual["status"]].should == exptect["ステータス"]
