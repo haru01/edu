@@ -1,15 +1,17 @@
 == これは？
 ２日演習コースの セミナー状況管理システム の配るシステム。このアプリを出発点に、チームで数イテレーション回してみて開発を学ぶ想定
 
-== install
+== install & setup
 
  windowsの場合は Development Kit のインストールを忘れずに
  http://rubyinstaller.org/downloads/
  https://github.com/oneclick/rubyinstaller/wiki/development-kit
 
+ gem update --system
  gem install bundler
  cd seminar
  bundle install
+ bundle exec rake db:migrate
 
 == Running Cucumber
 
