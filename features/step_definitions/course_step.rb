@@ -41,7 +41,7 @@ When /^授業登録APIが呼ばれた$/ do |table|
                            number: params["人数"],
                            curriculum_id: params["カリキュラムID"],
                            customer_id: params["顧客ID"],
-                           main_re_id: params["主講師ID"],}.to_json
+                           main_lecturer_id: params["主講師ID"],}.to_json
 
 
 end
@@ -62,7 +62,6 @@ end
 
 Then /^授業情報が取得できていること$/ do |table|
   actual = JSON.parse(last_response.body)[0]
-  puts actual
   exptect = table.hashes[0]
 
   actual["main_lecturer"]["name"].should == exptect["講師(主)"]
