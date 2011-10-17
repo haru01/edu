@@ -40,6 +40,8 @@ Then /^授業情報が取得できていること$/ do |table|
   exptect = table.hashes[0]
 
   actual["main_lecturer"]["name"].should == exptect["講師(主)"]
+  # TODO 講師（副）の情報取得
+  # TODO カリキュラムの名前、概要の情報取得
   actual["from_date"].should == exptect["開催日"]
   actual["location"].should == exptect["場所"]
   actual["number"].should == exptect["人数"].to_i
