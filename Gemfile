@@ -32,6 +32,7 @@ gem 'jquery-rails'
 
 group :development, :test, :cucumber do
   # Pretty printed test output
+  gem 'spork', '~> 0.9.0.rc'
   gem 'active_enum'
   gem 'rspec-rails'
   gem 'cucumber-rails'

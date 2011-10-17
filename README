@@ -9,7 +9,12 @@
  gem install bundler
  cd seminar
  bundle install
- bundle exec rake rspec
- bundle exec rake cucumber
+
+
+== Running Test
+ bundle exec spork cuc
+
+ bundle exec cucumber features
+ bundle exec rspec spec/
 
 
