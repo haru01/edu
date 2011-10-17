@@ -9,11 +9,15 @@ Given /^講師マスタが登録されている$/ do
 end
 
 Given /^カリキュラムマスタが登録されている$/ do
-  pending # express the regexp above with the code you wish you had
+  Fabricate(:curriculum, name: "TDD入門", description: "TDDをハンズオンで学ぶ", days: 3)
+  Fabricate(:curriculum, name: "TDD入門", description: "TDDをハンズオンで学ぶ", days: 3)
+  Fabricate(:curriculum, name: "リファクタリング入門", description: "リファクタリングをハンズオンで学ぶ", days: 1)
 end
 
 Given /^顧客マスタが登録されている$/ do
-  pending # express the regexp above with the code you wish you had
+
+  Fabricate(:customer, name: "企業A")
+  Fabricate(:customer, name: "企業B")
 end
 
 Given /^授業が登録されている$/ do |table|
@@ -26,6 +30,20 @@ Given /^授業が登録されている$/ do |table|
     @assign = Fabricate(:assign, course_id: course.id,
                        lecturer_id: lecturer.id)
   end
+end
+
+
+When /^授業登録APIが呼ばれた$/ do |table|
+  params = table.hashes[0]
+  post courses_path, { from_date: params["開催日（開始）"],
+                           to_date: params["開催日（終了）"],
+                           location: params["場所"],
+                           number: params["人数"],
+                           curriculum_id: params["カリキュラムID"],
+                           customer_id: params["顧客ID"],
+                           main_re_id: params["主講師ID"],}.to_json
+
+
 end
 
 When /^授業の一覧取得APIにアクセスしている$/ do

@@ -6,4 +6,8 @@ class CoursesController < ApplicationController
                          include: { main_lecturer: { only: :name } },
                          except: [:created_at, :updated_at] )
   end
+
+  def create
+    respond_with(:status => :ok) # TODO
+  end
 end

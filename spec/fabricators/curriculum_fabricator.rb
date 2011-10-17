@@ -1,5 +1,5 @@
 Fabricator(:curriculum) do
-  name ""
-  description ""
-  int ""
+  name "defautl"
+  description "default"
+  days 1
 end
