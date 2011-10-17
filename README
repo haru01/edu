@@ -2,6 +2,7 @@
 ２日演習コースの セミナー状況管理システム の配るシステム。このアプリを出発点に、チームで数イテレーション回してみて開発を学ぶ想定
 
 == install
+
  windowsの場合は Development Kit のインストールを忘れずに
  http://rubyinstaller.org/downloads/
  https://github.com/oneclick/rubyinstaller/wiki/development-kit
@@ -10,11 +11,24 @@
  cd seminar
  bundle install
 
+== Running Cucumber
 
-== Running Test
- bundle exec spork cuc
+=== before
 
- bundle exec cucumber features
- bundle exec rspec spec/
+ bundle exec spork cuc --port 12345
 
+=== execute
+
+ bundle exec cucumber --drb --port 12345
+
+
+== Running RSpec
+
+=== before
+
+ bundle exec spork
+
+=== execute
+
+ bundle exec rspec --drb spec/
 
