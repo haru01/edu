@@ -10,7 +10,7 @@ end
 
 Given /^カリキュラムマスタが登録されている$/ do
   Fabricate(:curriculum, name: "TDD入門", description: "TDDをハンズオンで学ぶ", days: 3)
-  Fabricate(:curriculum, name: "TDD入門", description: "TDDをハンズオンで学ぶ", days: 3)
+  Fabricate(:curriculum, name: "UML入門", description: "UMLをハンズオンで学ぶ", days: 2)
   Fabricate(:curriculum, name: "リファクタリング入門", description: "リファクタリングをハンズオンで学ぶ", days: 1)
 end
 
