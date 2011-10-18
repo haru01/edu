@@ -4,9 +4,6 @@ class CoursesController < ApplicationController
   respond_to :json
   def index
     @courses = Course.order("from_date")
-    puts "debug-----"
-    puts @courses[0].curriculum
-    puts "debug-----"
     respond_with(@courses,
                          include: [:main_lecturer, :curriculum],
                          except: [:created_at, :updated_at] )
