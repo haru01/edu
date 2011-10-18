@@ -6,6 +6,8 @@ class Course < ActiveRecord::Base
   has_many :assigns, :dependent => :destroy, :readonly => true
   has_many :lecturers, :through => :assigns, :readonly => true
 
+  belongs_to :curriculum
+
   class Status < ActiveEnum::Base
     value id: 1, name: '予定'
     value id: 2, name: '確定'
