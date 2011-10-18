@@ -9,7 +9,7 @@ http経由のデータのやりとりは、JSON形式で行う。細かなフォ
 
 ---
 
-h1. 実装済みのUserStories
+h1. 実装完了のUserStories
 
 ---
 
