@@ -14,13 +14,15 @@ class CoursesController < ApplicationController
     main_lecturer_id = args.delete("main_lecturer_id")
     args.merge! "status" =>  Course::Status["予定"]
     begin
-      @course = Course.create!(args)
-      @assign = Assign.create!(lecturer_id: main_lecturer_id,
-                              course_id: @course.id,
-                              role: Assign::Role['主'])
-      respond_with(:status => :ok) # TODO
+      ActiveRecord::Base.transaction do
+        @course = Course.create!(args)
+        @assign = Assign.create!(lecturer_id: main_lecturer_id,
+                                course_id: @course.id,
+                                role: Assign::Role['主'])
+      end
+      respond_with(:status => :ok)
     rescue Exception => e
-      raise :not_impelments
+      raise :not_implement_ex
     end
   end
 end
