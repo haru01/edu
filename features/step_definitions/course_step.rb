@@ -21,13 +21,13 @@ Given /^顧客マスタが登録されている$/ do
 end
 
 Given /^授業が登録されている$/ do |table|
-  table.hashes.each do | hash |
+  table.hashes.each do | params |
     course = Fabricate(:course,
-              from_date: Date.strptime(hash["開催日（開始）"], "%Y-%m-%d"),
-              to_date: Date.strptime(hash["開催日（終了）"], "%Y-%m-%d"),
-              location: hash["場所"],
-              number: hash["人数"].to_i)
-    lecturer = Lecturer.find_by_name(hash["講師(主)"])
+              from_date: params["開催日（開始）"],
+              to_date: params["開催日（終了）"],
+              location: params["場所"],
+              number: params["人数"].to_i)
+    lecturer = Lecturer.find_by_name(params["講師(主)"])
     @assign = Fabricate(:assign, course_id: course.id,
                        lecturer_id: lecturer.id)
   end
