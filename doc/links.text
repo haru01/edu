@@ -1,0 +1,37 @@
+= これは？
+このプロジェクトで使用しているライブラリとためになりそうなリンク集
+
+Cucumber
+- http://cukes.info/
+- https://github.com/cucumber/cucumber
+
+Rack::Test
+- https://github.com/brynary/rack-test
+- http://softwareblog.morlok.net/2010/12/18/testing-post-with-racktest/
+- http://route477.net/ramaze/?Rack%3A%3ATest
+
+Fabrication
+- http://fabricationgem.org/
+- https://github.com/paulelliott/fabrication
+- http://d.hatena.ne.jp/hibariya/20101010/1286713523
+
+ActiveEnum
+- https://github.com/adzap/active_enum
+
+RSpec
+- https://www.relishapp.com/rspec
+- https://github.com/rspec/rspec
+
+Rails全般
+- http://guides.rubyonrails.org/
+- http://rubyonrails.org/documentation
+- http://api.rubyonrails.org/
+
+ActiveRecord
+- http://guides.rubyonrails.org/association_basics.html
+- http://d.hatena.ne.jp/moro/20110310/1299742978
+- http://guides.rubyonrails.org/active_record_querying.html
+- http://apidock.com/rails/ActiveRecord/Base
+
+json
+- http://apidock.com/rails/ActiveRecord/Serialization/to_json
