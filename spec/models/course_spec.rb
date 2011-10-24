@@ -9,6 +9,7 @@ end
 
 describe Course do
   include_context "１件授業が登録されている"
+
   it "講師(主)が取得できること" do
     course.main_lecturer.name.should == lecturer.name
   end
