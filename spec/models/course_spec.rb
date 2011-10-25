@@ -2,9 +2,20 @@
 require 'spec_helper'
 
 shared_context "１件授業が登録されている" do
-  let!(:course) { Fabricate(:course) }
-  let!(:lecturer) { Fabricate(:lecturer) }
-  let!(:assign) { Fabricate(:assign) }
+  let!(:assign) do
+    Fabricate(:assign) do
+      course!
+      lecturer!
+    end
+  end
+
+  let!(:course) do
+    assign.course
+  end
+
+  let!(:lecturer) do
+    assign.lecturer
+  end
 end
 
 describe Course do
