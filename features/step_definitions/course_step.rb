@@ -28,8 +28,9 @@ Given /^授業が登録されている$/ do |table|
               number: params["人数"].to_i,
               curriculum_id: Curriculum.find_by_name(params["カリキュラム名称"]))
     lecturer = Lecturer.find_by_name(params["講師(主)"])
-    @assign = Fabricate(:assign, course_id: course.id,
-                       lecturer_id: lecturer.id)
+    @assign = Fabricate(:main_assign,
+                         course_id: course.id,
+                         lecturer_id: lecturer.id)
   end
 end
 

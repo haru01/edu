@@ -3,7 +3,7 @@ require 'spec_helper'
 
 shared_context "１件授業が登録されている" do
   let!(:assign) do
-    Fabricate(:assign) do
+    Fabricate(:main_assign) do
       course!
       lecturer!
     end
