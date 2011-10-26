@@ -1,0 +1,51 @@
+初期状態のソースコードの簡単な説明の資料
+
+app/models
+ - lecturer.rb [講師]
+   特に関連は引いていない.
+ - curriculum.rb [カリキュラム]
+   1対多関係があるので has_many の関係を引いている
+ - customer.rb [顧客]
+   顧客と授業コースに1対多関係があるが、現在は引いていない。今回の研修中に関連を引く必要があるかもしれない。
+ - course.rb [授業コース]
+   授業コースとカリキュラムは 多対１関係があるので belongs_to :curriculum
+   授業コースには少なくとも主担当の講師が１人いると想定しているので has_one :main_assign has_one :main_lecturer
+   関連の引き方や使用しているライブラリーの参考になるリンク集は、doc/links.textにあるのでこちらを。
+   授業コースには、０人以上の副担当があるが、現在は関連を引いていない。研修中に 引く必要があるかもしれない。
+   授業コースと顧客に多対１関連を引いていない。（概念モデルにははった）。今回の研修中に関連を引く必要があるかもしれない。
+   ActiveEnumを使っている。
+   関連の引き方や使用しているライブラリーの参考になるリンク集は、doc/links.textにあるのでこちらを。
+ - assign.rb [担当]
+   授業コースとカリキュラムの多対多関連の中間テーブルに相当
+
+app/controllers
+  - courses_controller.rb
+    index が 授業コース一覧取得。
+    create が 授業コース登録に相当
+    json形式でやり取りしている。参考になるリンク集は、doc/links.textにあるのでこちらを参考に。
+
+config
+  - routes.rb
+    urlと呼ばれるコントローラーのメソッドのマッピングなどを行っている。
+    bundle exec rake routes で現在 のルート設定が解る
+    現在は courses、lecturersを標準的な設定のみ。
+    （今回の研修ではセクシーなURL設計までは特に考慮していない）
+    顧客一覧、カリキュラム一覧の取得を行う際は設定が足りないので注意してね。
+
+
+spec/fabricators
+  テストの際にデータのセットアップのライブラリー
+  参考になるリンク集は、doc/links.textにあるのでこちらを参考に。
+
+spec/models
+  - assign_spec.rb
+    ActiveEnumの使い方が何となく解る例
+  - course_spec.rb
+    授業と講師の関係が何となく解る例になっている
+    fabricatorsの使い方が何となく解る例
+
+features
+  - course_index.feature
+    cucumberのフィーチャーの記述例
+  - step_definitions
+    ステップ記述例
