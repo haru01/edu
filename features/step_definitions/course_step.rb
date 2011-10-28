@@ -11,6 +11,7 @@ end
 Given /^カリキュラムマスタが登録されている$/ do
   Fabricate(:curriculum, name: "TDD入門", description: "TDDをハンズオンで学ぶ", days: 3)
   Fabricate(:curriculum, name: "UML入門", description: "UMLをハンズオンで学ぶ", days: 2)
+  Fabricate(:curriculum, name: "UML実践", description: "UMLをハンズオンで学ぶ", days: 2)
   Fabricate(:curriculum, name: "リファクタリング入門", description: "リファクタリングをハンズオンで学ぶ", days: 1)
 end
 
@@ -26,7 +27,7 @@ Given /^授業が登録されている$/ do |table|
               to_date: params["開催日（終了）"],
               location: params["場所"],
               number: params["人数"].to_i,
-              curriculum_id: Curriculum.find_by_name(params["カリキュラム名称"]))
+              curriculum: Curriculum.find_by_name(params["カリキュラム名称"]))
     lecturer = Lecturer.find_by_name(params["講師(主)"])
     @assign = Fabricate(:main_assign,
                          course_id: course.id,
